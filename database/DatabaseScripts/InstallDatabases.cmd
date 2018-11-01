@@ -22,7 +22,7 @@ REM **************************************************************************/
 @Echo *                                                                             *
 @Echo * Modify this script to reflect the way you connect to the SQL Server         *
 @Echo * as well as if location of the .NET 2.0 runtime on your computer             *
-@Echo * is different from C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727.            *
+@Echo * is different from C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319.            *
 @Echo *                                                                             *
 @Echo * If you wish to cancel, press [CTRL]-C to terminate the batch job.           *
 @Echo *                                                                             *
@@ -40,7 +40,7 @@ pause
 osql -E -i Sql/CreateDatabase1.sql
 osql -E -i Sql/CreateDatabase2.sql
 osql -E -i Sql/CreateDatabase3.sql
-C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_regsql -S localhost -E -A all -d MSPetShop4Services
+C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regsql -S localhost -E -A all -d MSPetShop4Services
 
 @Echo.
 @Echo.
@@ -81,10 +81,10 @@ osql -E -i Sql/LoadTables1.sql
 @Echo *******************************************************************************
 @Echo.
 
-C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_regsql -S localhost -E -d MSPetShop4 -ed
-C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_regsql -S localhost -E -d MSPetShop4 -t Item -et
-C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_regsql -S localhost -E -d MSPetShop4 -t Product -et
-C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_regsql -S localhost -E -d MSPetShop4 -t Category -et
+C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regsql -S localhost -E -d MSPetShop4 -ed
+C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regsql -S localhost -E -d MSPetShop4 -t Item -et
+C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regsql -S localhost -E -d MSPetShop4 -t Product -et
+C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regsql -S localhost -E -d MSPetShop4 -t Category -et
 
 @Echo.
 @Echo.
@@ -94,4 +94,3 @@ C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_regsql -S localhost -E -d M
 @Echo *                                                                             *
 @Echo *******************************************************************************
 @Echo.
-pause

@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  
+  petshop-db:
+    image: sixeyed/petshop-db
+    networks:
+      - app-net
+
+  petshop-web:
+    image: sixeyed/petshop-web
+    ports:
+      - "8010:80"      
+    depends_on:
+      - petshop-db
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    external:
+      name: nat

@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Syndication;
 using System.ServiceModel.Web;
 using System.Text;
-using PetShop.SyndicationFeeds.Properties;
+//using PetShop.SyndicationFeeds.Properties;
 using PetShop.Model;
 using PetShop.Model.DataContext;
 
@@ -64,6 +64,12 @@ namespace PetShop.SyndicationFeeds
             
             builder.Path = pathBuilder.ToString();
             return builder.Uri;
+        }
+
+        private struct Resource
+        {
+            public const string FeedTitle = "PetShop for .NET 3.5";
+            public const string FeedContent = "基于.NET Framework 3.5的Petshop，使用LINQ to SQL改进数据访问层，并在UI层上做一些改进，如使用ASP.NET AJAX，ListView控件等。";
         }
     }
 }

@@ -16,6 +16,15 @@ services:
     networks:
       - app-net
 
+  petshop-webservice:
+    image: sixeyed/petshop-webservice
+    ports:
+      - "8020:80"      
+    depends_on:
+      - petshop-db
+    networks:
+      - app-net
+
 networks:
   app-net:
     external:

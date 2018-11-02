@@ -1,0 +1,4 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" 
+    Service="CategoryService" 
+    CodeBehind="~/App_Code/CategoryService.cs"    
+    Factory="FlatWsdlServiceHostFactory"%>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+***********************************************************************************************
+website.publishproj
+
+WARNING: DO NOT MODIFY this file, it is used for the web publish process.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+***********************************************************************************************
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{40eb198c-5fa5-4507-a1ce-4fac587de864}</ProjectGuid>
+    <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
+    <SourceWebVirtualPath>/WebService</SourceWebVirtualPath>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SourceWebProject>
+    </SourceWebProject>
+    <SourceWebMetabasePath>
+    </SourceWebMetabasePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- for VS2010 we need to use 10.5 but for VS2012+ we should use VisualStudioVersion -->
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)' =='' and '$(VisualStudioVersion)' == 10.0 ">10.5</WebPublishTargetsVersion>
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)'=='' ">$(VisualStudioVersion)</WebPublishTargetsVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(WebPublishTargetsVersion)</VSToolsPath>
+    <_WebPublishTargetsPath Condition=" '$(_WebPublishTargetsPath)'=='' ">$(VSToolsPath)</_WebPublishTargetsPath>
+    <AssemblyFileVersion Condition="'$(AssemblyFileVersion)' == ''">1.0.0.0</AssemblyFileVersion>
+    <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>$(AssemblyFileVersion)</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>$(AssemblyVersion)</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{AE805124-3D88-4AE5-A1E7-5A5A595A298E}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{D86CE149-16FD-481F-A175-EB3B4F703715}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALFactory\DALFactory.csproj">
+      <Project>{FBAE3210-40A6-44D3-ACEF-5881D8F4A6CD}</Project>
+      <Name>DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{87B51A22-242C-4FD8-AB60-A12160EEC06A}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBllStrategy\IBLLStrategy.csproj">
+      <Project>{6B8E3D04-CCBD-45F6-9A8E-14682102A4A4}</Project>
+      <Name>IBLLStrategy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDAL\IDAL.csproj">
+      <Project>{E1445288-68F8-4556-A82E-25CFE6B30195}</Project>
+      <Name>IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMessaging\IMessaging.csproj">
+      <Project>{4F9001B9-25C4-4ACE-AA61-74BD98498A45}</Project>
+      <Name>IMessaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IProfileDAL\IProfileDAL.csproj">
+      <Project>{89ACB430-E20E-4FA1-9FD1-3459650AB5D3}</Project>
+      <Name>IProfileDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingFactory\MessagingFactory.csproj">
+      <Project>{BF12E9BF-C032-4B42-9212-B4284A3494AF}</Project>
+      <Name>MessagingFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{1FF5B08D-74A0-452D-A8A2-2534D985F8BE}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OracleProfileDAL\OracleProfileDAL.csproj">
+      <Project>{276DC996-8AEB-4829-BA2B-89B6E59F0445}</Project>
+      <Name>OracleProfileDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oracle\OracleDAL.csproj">
+      <Project>{73CDF15E-9236-4B41-A6CB-0683B6D38A38}</Project>
+      <Name>OracleDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLProfileDAL\SQLProfileDAL.csproj">
+      <Project>{597791DD-F8B6-4E4E-8079-43F0DA6DDC82}</Project>
+      <Name>SQLProfileDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLServer\SQLServerDAL.csproj">
+      <Project>{9AA6B962-0628-4C0D-A4EA-54A244C32136}</Project>
+      <Name>SQLServerDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />
+</Project>

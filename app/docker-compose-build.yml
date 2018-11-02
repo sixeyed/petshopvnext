@@ -11,3 +11,8 @@ services:
     build:
       context: ..
       dockerfile: ./docker/web/Dockerfile
+
+  petshop-webservice:
+    build:
+      context: ..
+      dockerfile: ./docker/webservice/Dockerfile

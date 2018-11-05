@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+  
+  petshop-db:
+    image: sixeyed/petshop-db
+    networks:
+      - app-net
+    deploy:
+      endpoint_mode: dnsrr
+      placement:
+        constraints:
+        - node.platform.os == windows
+
+  petshop-web:
+    image: sixeyed/petshop-web
+    ports:
+      - mode: host
+        target: 80
+        published: 8080
+    depends_on:
+      - petshop-db
+    networks:
+      - app-net
+    deploy:
+      endpoint_mode: dnsrr      
+      placement:
+        constraints:
+        - node.platform.os == windows
+
+  petshop-webservice:
+    image: sixeyed/petshop-webservice
+    ports:
+      - mode: host
+        target: 80
+        published: 8085
+    depends_on:
+      - petshop-db
+    networks:
+      - app-net
+    deploy:
+      endpoint_mode: dnsrr      
+      placement:
+        constraints:
+        - node.platform.os == windows
+
+networks:
+  app-net:

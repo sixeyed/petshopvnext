@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/mssql-server-windows-express:2016-sp1
+FROM sixeyed/sql-server:2017-windowsservercore-1809
 
 ENV ACCEPT_EULA="Y" `
     sa_password="DockerCon!!!"

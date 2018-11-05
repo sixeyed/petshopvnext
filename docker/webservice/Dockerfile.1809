@@ -1,0 +1,10 @@
+# escape=`
+FROM sixeyed/aspnet-3.5:windowsservercore-1809
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+
+RUN Install-WindowsFeature NET-HTTP-Activation; `
+    Remove-Website -Name 'Default Web Site';`
+    New-Website -Name 'petshop-webservice' -Port 80 -PhysicalPath 'C:\petshop-webservice\' -Force
+
+COPY petshop-webservice.zip .
+RUN Expand-Archive -Path petshop-webservice.zip -DestinationPath C:\

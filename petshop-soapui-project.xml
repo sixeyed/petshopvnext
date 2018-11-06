@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Body>
+      <GetProductByIdResponse xmlns="http://com.vnext.petshop/ProductService">
+         <GetProductByIdResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+            <CategoryId>BIRDS</CategoryId>
+            <Description>Can't let go of the past? This is your bird</Description>
+            <ImageUrl>~/Prod_Images/Birds/icon-pteranodon.gif</ImageUrl>
+            <Name>Pteranodon</Name>
+            <ProductId>BD-03</ProductId>
+         </GetProductByIdResult>
+      </GetProductByIdResponse>
+   </s:Body>
+</s:Envelope>

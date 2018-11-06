@@ -7,7 +7,7 @@ RUN Install-PackageProvider -Name chocolatey -RequiredVersion 2.8.5.130 -Force; 
 WORKDIR /src
 COPY ./src/PetShop .
 RUN mkdir 'C:\Windows\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files'; `
-    msbuild .\Web\website.publishproj /p:DeployOnBuild=true /p:OutputPath=c:\out\ /p:Configuration=Release
+    msbuild .\Web\website.publishproj /p:DeployOnBuild=true /p:OutputPath=c:\out\ /p:Configuration=Release /p:AutoParameterizationWebConfigConnectionStrings=False
 
 # PetShop
 FROM microsoft/aspnet:20181009-3.5-windowsservercore-ltsc2016

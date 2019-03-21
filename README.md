@@ -8,7 +8,7 @@ In this repo there is a [Dockerfile for the web application](docker/web/Dockerfi
 
 ## Usage
 
-You can compile and run the whole app in containers. You don't need SQL Server or .NET 3.5 installed, you just need [Docker Desktop](https://www.docker.com/products/docker-desktop) on Windows 10, or [Docker Enterprise](https://store.docker.com/editions/enterprise/docker-ee-server-windows) on Windows Server 2016.
+You can compile and run the whole app in containers. You don't need SQL Server or .NET 3.5 installed, you just need [Docker Desktop](https://www.docker.com/products/docker-desktop) on Windows 10 with update 1809, or [Docker Enterprise](https://store.docker.com/editions/enterprise/docker-ee-server-windows) on Windows Server 2019.
 
 Start by cloning this repo and switching to the directory:
 
@@ -33,20 +33,40 @@ Then start the app with Compose:
 docker-compose -f .\app\docker-compose.yml up -d
 ```
 
-On Windows 10 you can browse to http://localhost:8010 to see the app.
+Browse to http://localhost:8010 to see the app:
+
+
+![.NET PetShop running on Windows Docker containers](petshop.png)
+
+Everything works, including the checkout function and the RSS feeds (which are running in a WCF service).
+
+### Windows Server 2016
+
+The app also runs in Docker on Windows Server 2016, with some Compose file overrides.
+
+Build:
+
+```
+docker-compose `
+  -f .\app\docker-compose.yml `
+  -f .\app\docker-compose-build-2016.yml `
+  build
+```
+
+Run:
+
+```
+docker-compose `
+  -f .\app\docker-compose.yml `
+  -f .\app\docker-compose-2016.yml `
+  up -d
+```
 
 On Windows Server 2016 you'll need to get the IP address of the container and browse to it:
 
 ```
 docker container inspect --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' app_petshop-web_1
 ```
-
-And you'll see this:
-
-![.NET PetShop running on Windows Docker containers](petshop.png)
-
-Everything works, including the checkout function and the RSS feeds (which are running in a WCF service).
-
 
 ### Credits
 

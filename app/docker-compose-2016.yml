@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  
+  petshop-db:
+    image: sixeyed/petshop-db
+
+  petshop-web:
+    image: sixeyed/petshop-web
+
+  petshop-webservice:
+    image: sixeyed/petshop-webservice

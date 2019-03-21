@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  
+  petshop-db:
+    image: sixeyed/petshop-db
+    build:
+      context: ..
+      dockerfile: ./docker/db/Dockerfile
+
+  petshop-web:
+    image: sixeyed/petshop-web
+    build:
+      context: ..
+      dockerfile: ./docker/web/Dockerfile
+
+  petshop-webservice:
+    image: sixeyed/petshop-webservice
+    build:
+      context: ..
+      dockerfile: ./docker/webservice/Dockerfile

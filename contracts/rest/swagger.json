@@ -1,0 +1,171 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "v1",
+      "title": "My API"
+    },
+    "paths": {
+      "/api/Categories": {
+        "get": {
+          "tags": [
+            "Categories"
+          ],
+          "operationId": "Get",
+          "consumes": [],
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Category"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Categories/{id}": {
+        "get": {
+          "tags": [
+            "Categories"
+          ],
+          "operationId": "Get",
+          "consumes": [],
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "name": "categoryId",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      },
+      "/api/Products": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "operationId": "Get",
+          "consumes": [],
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Products/{id}": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "operationId": "Get",
+          "consumes": [],
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "name": "productId",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Category": {
+        "type": "object",
+        "properties": {
+          "categoryId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string"
+          },
+          "categoryId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }

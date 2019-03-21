@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="CategoryService" targetNamespace="http://com.vnext.petshop/CategoryService"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+    xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+    xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+    xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    xmlns:tns="http://com.vnext.petshop/CategoryService"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+    <wsdl:types>
+        <xsd:schema elementFormDefault="qualified" targetNamespace="http://com.vnext.petshop/CategoryService">
+            <xsd:element name="GetCategories">
+                <xsd:complexType>
+                    <xsd:sequence/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GetCategoriesResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="GetCategoriesResult" nillable="true" type="tns:ArrayOfCategory"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:complexType name="ArrayOfCategory">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory"/>
+            <xsd:complexType name="Category">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="CategoryId" nillable="true" type="xsd:string"/>
+                    <xsd:element minOccurs="0" name="Description" nillable="true" type="xsd:string"/>
+                    <xsd:element minOccurs="0" name="Name" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="Category" nillable="true" type="tns:Category"/>
+            <xsd:element name="GetCategoryById">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="categoryId" nillable="true" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GetCategoryByIdResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" name="GetCategoryByIdResult" nillable="true" type="tns:Category"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+            <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+            <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+            <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+            <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+            <xs:element name="byte" nillable="true" type="xs:byte"/>
+            <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+            <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+            <xs:element name="double" nillable="true" type="xs:double"/>
+            <xs:element name="float" nillable="true" type="xs:float"/>
+            <xs:element name="int" nillable="true" type="xs:int"/>
+            <xs:element name="long" nillable="true" type="xs:long"/>
+            <xs:element name="QName" nillable="true" type="xs:QName"/>
+            <xs:element name="short" nillable="true" type="xs:short"/>
+            <xs:element name="string" nillable="true" type="xs:string"/>
+            <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+            <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+            <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+            <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+            <xs:element name="char" nillable="true" type="tns:char"/>
+            <xs:simpleType name="char">
+                <xs:restriction base="xs:int"/>
+            </xs:simpleType>
+            <xs:element name="duration" nillable="true" type="tns:duration"/>
+            <xs:simpleType name="duration">
+                <xs:restriction base="xs:duration">
+                    <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+                    <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+                    <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="guid" nillable="true" type="tns:guid"/>
+            <xs:simpleType name="guid">
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:attribute name="FactoryType" type="xs:QName"/>
+            <xs:attribute name="Id" type="xs:ID"/>
+            <xs:attribute name="Ref" type="xs:IDREF"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="ICategoryService_GetCategories_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCategories"/>
+    </wsdl:message>
+    <wsdl:message name="ICategoryService_GetCategories_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCategoriesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ICategoryService_GetCategoryById_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCategoryById"/>
+    </wsdl:message>
+    <wsdl:message name="ICategoryService_GetCategoryById_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCategoryByIdResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ICategoryService">
+        <wsdl:operation name="GetCategories">
+            <wsdl:input wsaw:Action="http://com.vnext.petshop/CategoryService/ICategoryService/GetCategories" message="tns:ICategoryService_GetCategories_InputMessage"/>
+            <wsdl:output wsaw:Action="http://com.vnext.petshop/CategoryService/ICategoryService/GetCategoriesResponse" message="tns:ICategoryService_GetCategories_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCategoryById">
+            <wsdl:input wsaw:Action="http://com.vnext.petshop/CategoryService/ICategoryService/GetCategoryById" message="tns:ICategoryService_GetCategoryById_InputMessage"/>
+            <wsdl:output wsaw:Action="http://com.vnext.petshop/CategoryService/ICategoryService/GetCategoryByIdResponse" message="tns:ICategoryService_GetCategoryById_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_ICategoryService" type="tns:ICategoryService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetCategories">
+            <soap:operation soapAction="http://com.vnext.petshop/CategoryService/ICategoryService/GetCategories" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCategoryById">
+            <soap:operation soapAction="http://com.vnext.petshop/CategoryService/ICategoryService/GetCategoryById" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CategoryService">
+        <wsdl:port name="BasicHttpBinding_ICategoryService" binding="tns:BasicHttpBinding_ICategoryService">
+            <soap:address location="http://1a363cc3929b/CategoryService.svc"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

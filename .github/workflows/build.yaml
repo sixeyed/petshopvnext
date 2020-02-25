@@ -21,7 +21,7 @@ jobs:
         working-directory: app
         run: |
           docker login -u $env:USER -p $env:TOKEN
-          docker-compose -f ddocker-compose-build.yml build petshop-db
+          docker-compose -f docker-compose-build.yml build petshop-db
           docker image push sixeyed/petshop-db:1809
         env:
           USER: ${{ secrets.DOCKER_HUB_USERNAME }}

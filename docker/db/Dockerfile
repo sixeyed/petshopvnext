@@ -1,8 +1,7 @@
 # escape=`
-FROM microsoft/mssql-server-windows-express:2016-sp1
+FROM dak4dotnet/sql-server:2017
 
-ENV ACCEPT_EULA="Y" `
-    sa_password="DockerCon!!!"
+ENV sa_password="DockerCon!!!"
 
 COPY ./database/DatabaseScripts/ .
-RUN ./InstallDatabases.cmd
+RUN ["powershell", "./InstallDatabases.ps1"]

@@ -1,0 +1,56 @@
+name: Windows 2019 build
+
+on:
+  push:
+    paths:
+      - ".github/**"
+      - "app/**"
+      - "docker/**"
+      - "src/**"
+  schedule:
+    - cron: "0 0-7 * * *"
+
+# split into multiple builds, otherwise the runner runs out of disk space...
+# and docker-compose push fails with exitcode 1, so push manually
+jobs:
+  build-db:
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@master
+      - name: Build and push database
+        working-directory: app
+        run: |
+          docker login -u $env:USER -p $env:TOKEN
+          docker-compose -f docker-compose-build.yaml build petshop-db
+          docker image push sixeyed/petshop-db:1809
+        env:
+          USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+  build-web:
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@master
+      - name: Build and push web
+        working-directory: ci
+        run: |
+          docker login -u $env:USER -p $env:TOKEN
+          docker-compose -f docker-compose-build.yaml build petshop-web
+          docker image push sixeyed/petshop-web:1809
+        env:
+          USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+  build-webservice:
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@master
+      - name: Build and push web
+        working-directory: ci
+        run: |
+          docker login -u $env:USER -p $env:TOKEN
+          docker-compose -f docker-compose-build.yaml build petshop-webservice
+          docker image push sixeyed/petshop-webservice:1809
+        env:
+          USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}

@@ -21,7 +21,7 @@ jobs:
         working-directory: app
         run: |
           docker login -u $env:USER -p $env:TOKEN
-          docker-compose -f docker-compose-build.yaml build petshop-db
+          docker-compose -f ddocker-compose-build.yml build petshop-db
           docker image push sixeyed/petshop-db:1809
         env:
           USER: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -32,10 +32,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Build and push web
-        working-directory: ci
+        working-directory: app
         run: |
           docker login -u $env:USER -p $env:TOKEN
-          docker-compose -f docker-compose-build.yaml build petshop-web
+          docker-compose -f docker-compose-build.yml build petshop-web
           docker image push sixeyed/petshop-web:1809
         env:
           USER: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -46,10 +46,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Build and push web
-        working-directory: ci
+        working-directory: app
         run: |
           docker login -u $env:USER -p $env:TOKEN
-          docker-compose -f docker-compose-build.yaml build petshop-webservice
+          docker-compose -f docker-compose-build.yml build petshop-webservice
           docker image push sixeyed/petshop-webservice:1809
         env:
           USER: ${{ secrets.DOCKER_HUB_USERNAME }}

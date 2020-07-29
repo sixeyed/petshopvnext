@@ -11,6 +11,7 @@ namespace PetShop.DALFactory {
 
         // Look up the DAL implementation we should be using
         private static readonly string path = ConfigurationManager.AppSettings["WebDAL"];
+        private static readonly string servicePath = ConfigurationManager.AppSettings["ServiceDAL"];
         private static readonly string orderPath = ConfigurationManager.AppSettings["OrdersDAL"];
         
         private DataAccess() { }
@@ -36,9 +37,9 @@ namespace PetShop.DALFactory {
         }
 
         public static PetShop.IDAL.IProduct CreateProduct() {
-            string className = path + ".Product";
-            return (PetShop.IDAL.IProduct)Assembly.Load(path).CreateInstance(className);
+            var assembly = string.IsNullOrEmpty(servicePath) ? path : servicePath;
+            var className = assembly + ".Product";
+            return (PetShop.IDAL.IProduct)Assembly.Load(assembly).CreateInstance(className);
         }
-
     }
 }

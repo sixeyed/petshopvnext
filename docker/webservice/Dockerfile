@@ -1,5 +1,5 @@
 # escape=`
-FROM mcr.microsoft.com/dotnet/framework/aspnet:3.5
+FROM mcr.microsoft.com/dotnet/framework/aspnet:3.5-windowsservercore-ltsc2019
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 RUN Install-WindowsFeature NET-HTTP-Activation; `

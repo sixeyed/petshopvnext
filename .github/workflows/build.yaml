@@ -41,6 +41,20 @@ jobs:
           USER: ${{ secrets.DOCKER_HUB_USERNAME }}
           TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+  build-web-v41:
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@master
+      - name: Build and push web
+        working-directory: app
+        run: |
+          docker login -u $env:USER -p $env:TOKEN
+          docker-compose -f docker-compose-build.yml build petshop-web-v41
+          docker image push sixeyed/petshop-web:v4.1-1809
+        env:
+          USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
   build-webservice:
     runs-on: windows-2019
     steps:

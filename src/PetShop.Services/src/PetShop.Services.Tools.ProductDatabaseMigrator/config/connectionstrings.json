@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "MSPetShop4": "Server=localhost,1434;Database=MSPetShop4;User Id=sa;Password=p33tsh**p;",
+    "petshop-db": "AccountEndpoint=https://some-cosmos-account.documents.azure.com:443/;AccountKey=key==;"
+  }
+}

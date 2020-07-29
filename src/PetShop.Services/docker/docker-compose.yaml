@@ -1,0 +1,21 @@
+version: "3.7"
+
+# you need to run the DB in Windows container mode then switch to 
+# Linux containers to run the app - 
+
+# docker-compose -f .\docker-compose-windows.yaml up -d petshop-db
+
+services:
+  petshop-products-service:
+    image: sixeyed/petshop-products-service:2007-alpine-3.12
+    environment: 
+      - ConnectionStrings:MSPetShop4=Server=host.docker.internal,1434;Database=MSPetShop4;User Id=sa;Password=p33tsh**p;
+    ports:
+      - 8081:80
+    build:
+      context: ..
+      dockerfile: docker/products-service/Dockerfile
+      args: 
+        SDK_TAG: 5.0.100-preview.7-alpine3.12
+        ASPNET_TAG: 5.0.0-preview.7-alpine3.12
+      target: alpine

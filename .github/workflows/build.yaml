@@ -8,7 +8,9 @@ on:
       - "docker/**"
       - "src/**"
   schedule:
-    - cron: "0 0-7 * * *"
+    - cron: "0 4 20 * *"  
+  workflow_dispatch:
+  
 
 # split into multiple builds, otherwise the runner runs out of disk space...
 # and docker-compose push fails with exitcode 1, so push manually
